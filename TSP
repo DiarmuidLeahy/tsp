@@ -26,7 +26,7 @@ public class TSP
 		Node Newcastle = new Node(63,"newcastle",54.21,-5.882);
 		Node [] towns = {Abbeyfeale,Adare,Arklow,Armagh,Athlone,Athy,Ballina,Ballinrobe,Ballybofe,Ballymena,Ballymoney,Newcastle,Gorey};
 		System.out.println("Distance between Gorey and Arklow is "+String.format("%.3f",dist(Gorey.latitude,Gorey.longitude,Arklow.latitude,Arklow.longitude))+"km");
-		System.out.println(findClosest(Ballybofe,towns).name);
+		System.out.println("The closest town to Ballybofe is "+findClosest(Ballybofe,towns).name);
 	}
 	/**
 	 * This method calculates the distance between two towns when the longitudes & latitudes are entered
