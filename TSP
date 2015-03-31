@@ -5,28 +5,34 @@ import java.util.ArrayList;
 public class TSP
 {
 	public static final double R = 6372.8;// In kilometers
-	//public static Node [] towns = new Node [80];
 	public static void main(String args[])
 	{
 		FileIO reader = new FileIO();
-		ArrayList <Integer> route = new ArrayList <Integer>();
-		String[] inputs = reader.load("C:/Users/Derri_000/Documents/Document.tsv");
-		Node Abbeyfeale = new Node(1,"Abbeyfeale",52.386,-9.294);
-		Node Adare = new Node(2,"Adare",52.564,-8.79);
-		Node Arklow = new Node(3,"arklow",52.794,-6.165);
-		Node Armagh= new Node(4,"Armagh",54.35,-6.655);
-		Node Athlone= new Node(5,"Athlone",53.433,-7.95);
-		Node Athy= new Node(6,"Athy",52.992,-6.987);
-		Node Ballina= new Node(7,"Ballina",54.117,-9.167);
-		Node Ballinrobe= new Node(8,"Ballinrobe",53.633,-9.233);
-		Node Ballybofe= new Node(9,"Ballybofe",54.8,-7.79);
-		Node Ballymena= new Node(10,"Ballymena",54.863,-6.284);
-		Node Ballymoney= new Node(11,"Ballymoney",55.071,-6.508);
-		Node Gorey = new Node(40,"gorey",52.677,-6.292);
-		Node Newcastle = new Node(63,"newcastle",54.21,-5.882);
-		Node [] towns = {Abbeyfeale,Adare,Arklow,Armagh,Athlone,Athy,Ballina,Ballinrobe,Ballybofe,Ballymena,Ballymoney,Newcastle,Gorey};
-		System.out.println("Distance between Gorey and Arklow is "+String.format("%.3f",dist(Gorey.latitude,Gorey.longitude,Arklow.latitude,Arklow.longitude))+"km");
-		System.out.println("The closest town to Ballybofe is "+findClosest(Ballybofe,towns).name);
+		//String route="";
+		ArrayList <Node> nodes = new ArrayList <Node>();
+		String[] inputs = reader.load("C:/Users/Derri_000/Documents/College/Algorithms & data structures2(cs211)/alltowns.txt");
+		Node [] towns = new Node [80];
+		for(int i=0;i<80;i++)
+		{
+			towns[i] = new Node();
+		}
+		int x = 0,pos = 0;   
+        for(String y : inputs)
+        {
+            switch (pos % 4)
+            {
+                case (0):towns[x].number = Integer.parseInt(y);pos++;break;
+                case (1):towns[x].name = y;pos++;break;
+                case (2):towns[x].longitude = Double.parseDouble(y);pos++;break;
+                case (3):towns[x].latitude = Double.parseDouble(y);pos++;x++;break;
+            }
+        }
+		for(int i=0;i<towns.length;i++)
+		{
+			nodes.add(towns[i]);
+		}
+		System.out.println("Distance between "+towns[2].name+" and "+towns[6].name+" is "+String.format("%.3f",dist(towns[2].latitude,towns[2].longitude,towns[6].latitude,towns[6].longitude))+"km");
+		System.out.println(findClosest(towns[4],towns).name);
 	}
 	/**
 	 * This method calculates the distance between two towns when the longitudes & latitudes are entered
