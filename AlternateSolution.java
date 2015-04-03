@@ -1,6 +1,5 @@
 package travellingSalesmanProblem;
 
-//import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Stack;
 import lab5.FileIO;
@@ -19,12 +18,12 @@ public class AltenateSolution extends TSP
     {
         numberOfNodes = adjacencyMatrix[1].length -1;
         int[] visited = new int[numberOfNodes + 1];
-        visited[1] = 1;
-        stack.push(1);
+        visited[30] = 30;		//to change start point, change 80s to whatever node you want to start on
+        stack.push(30);
         int element, dst = 0, i;
         int min = Integer.MAX_VALUE;
         boolean minFlag = false;
-        System.out.print(1 + ".");
+        System.out.print(30 + ".");
  
         while (!stack.isEmpty())
         {
@@ -61,12 +60,12 @@ public class AltenateSolution extends TSP
         int number_of_nodes;
         FileIO reader = new FileIO();
 		String[] inputs = reader.load("C:/Users/Derri_000/Documents/College/Algorithms & data structures2(cs211)/alltowns.txt");
-		Node [] towns = new Node [80];
-		for(int i=0;i<80;i++)
+		Node [] towns = new Node [81];
+		for(int i=1;i<81;i++)
 		{
 			towns[i] = new Node();
 		}
-		int x = 0,pos = 0;   
+		int x = 1,pos = 0;   
         for(String y : inputs)
         {
             switch (pos % 4)
@@ -81,10 +80,10 @@ public class AltenateSolution extends TSP
         {
             number_of_nodes = towns.length;
             int adjacency_matrix[][] = new int[number_of_nodes + 1][number_of_nodes + 1];
-            System.out.println("Enter the adjacency matrix");
-            for (int i = 0; i < number_of_nodes; i++)
+            //forming the adjacency matrix
+            for (int i = 1; i < number_of_nodes; i++)
             {
-                for (int j = 0; j < number_of_nodes; j++)
+                for (int j = 1; j < number_of_nodes; j++)
                 {
                     //System.out.println((int)dist(towns[i].latitude,towns[i].longitude,towns[j].latitude,towns[j].longitude));
                 	adjacency_matrix[i][j] = (int)dist(towns[i].latitude,towns[i].longitude,towns[j].latitude,towns[j].longitude);
@@ -100,7 +99,7 @@ public class AltenateSolution extends TSP
                     }
                 }
             }
-            System.out.println("the citys are visited as follows");
+            System.out.println("quickest route using nearest neighbour");
             AltenateSolution tspNearestNeighbour = new AltenateSolution();
             tspNearestNeighbour.tsp(adjacency_matrix);
             
@@ -108,6 +107,5 @@ public class AltenateSolution extends TSP
          {
              System.out.println("Wrong Input format");
          }
-        
     }
 }
