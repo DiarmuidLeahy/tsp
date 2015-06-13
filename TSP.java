@@ -31,9 +31,7 @@ public class TSP
 		{
 			nodes.add(towns[i]);
 		}
-		System.out.println("Distance between "+towns[2].name+" and "+towns[6].name+" is "+String.format("%.3f",dist(towns[2].latitude,towns[2].longitude,towns[6].latitude,towns[6].longitude))+"km");
-		System.out.println("Closest town to "+towns[4].name+" is "+findClosest(towns[4],towns).name+" with a distance of "+String.format("%.3f", dist(towns[4].latitude,towns[4].longitude,findClosest(towns[4],towns).latitude,findClosest(towns[4],towns).longitude))+"km");
-		System.out.println((int)Math.round(dist(towns[2].latitude,towns[2].longitude,towns[6].latitude,towns[6].longitude)));
+		
 		for(int i=0;i<towns.length;i++)
 		{
 			for(int j=0;j<towns.length;j++)
