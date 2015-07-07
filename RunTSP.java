@@ -4,12 +4,12 @@ import java.util.InputMismatchException;
 import java.util.Stack;
 import lab5.FileIO;
  
-public class AltenateSolution extends TSP
+public class RunTSP extends TSP
 {
     private int numberOfNodes;
     private Stack<Integer> stack;
  
-    public AltenateSolution()
+    public RunTSP()
     {
         stack = new Stack<Integer>();
     }
@@ -100,7 +100,7 @@ public class AltenateSolution extends TSP
                 }
             }
             System.out.println("quickest route using nearest neighbour");
-            AltenateSolution tspNearestNeighbour = new AltenateSolution();
+           RunTSP tspNearestNeighbour = new RunTSP();
             tspNearestNeighbour.tsp(adjacency_matrix);
             
         } catch (InputMismatchException inputMismatch)
